@@ -15,7 +15,7 @@
         "anklimsk/cakephp-basic-functions": "*",
         "anklimsk/cakephp-config-plugin": "*",
         "anklimsk/cakephp-extended-test": "*",
-        "anklimsk/anklimsk/cakephp2-theme": "*"
+        "anklimsk/cakephp2-theme": "*"
     },
     "support": {
         "source": "https://github.com/anklimsk/cakephp-console-installer"
