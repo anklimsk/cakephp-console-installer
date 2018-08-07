@@ -15,7 +15,7 @@ App::uses('File', 'Utility');
 App::uses('String', 'Utility');
 App::uses('CakeText', 'Utility');
 App::uses('CakeSchema', 'Model');
-App::uses('Language', 'CakeTheme.Utility');
+App::uses('Language', 'CakeBasicFunctions.Utility');
 
 /**
  * This shell is used to install application.
