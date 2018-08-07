@@ -20,8 +20,7 @@ Used to fast checking the application is already installed.
 ## Using console
 - `cake CakeInstaller -h` - To get help;
 - `cake CakeInstaller` - To start interactive shell of installer;
-- `cake CakeInstaller.check` - To start command of installer;
-- `cake CakeInstaller.check -h` - To get help for command of installer.
+- `cake CakeInstaller.check` - To start command of installer.
 
 ## Initialization of database tables with data
 
