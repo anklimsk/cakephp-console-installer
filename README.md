@@ -25,6 +25,7 @@ Console installer for CakePHP
 ```php
 CakePlugin::load('CakeInstaller', ['bootstrap' => true, 'routes' => true]);
 ```
+
 ## Using
 
 [Using this plugin](docs/USING.md)
