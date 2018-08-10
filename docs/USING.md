@@ -18,9 +18,9 @@ Used to fast checking the application is already installed.
 `app/Locale/rus/LC_MESSAGES`;
 
 ## Using console
-- `cake CakeInstaller -h` - To get help;
-- `cake CakeInstaller` - To start interactive shell of installer;
-- `cake CakeInstaller.check` - To start command of installer.
+- `Console/cake CakeInstaller -h` - To get help;
+- `Console/cake CakeInstaller` - To start interactive shell of installer;
+- `Console/cake CakeInstaller check` - To start command of installer.
 
 ## Initialization of database tables with data
 
