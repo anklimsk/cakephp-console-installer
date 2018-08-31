@@ -29,57 +29,58 @@
 
 1. Add to the beginning of the schema file `app/Config/Schema/schema.php` of your application:
 
-```php
-App::uses('InstallerInit', 'CakeInstaller.Model');
-App::uses('ClassRegistry', 'Utility');
+   ```php
+   App::uses('InstallerInit', 'CakeInstaller.Model');
+   App::uses('ClassRegistry', 'Utility');
 
-class AppSchema extends CakeSchema
-{
+   class AppSchema extends CakeSchema
+   {
 
-    public function before($event = [])
-    {
-        $ds = ConnectionManager::getDataSource($this->connection);
-                $ds->cacheSources = false; 
+       public function before($event = [])
+       {
+           $ds = ConnectionManager::getDataSource($this->connection);
+           $ds->cacheSources = false; 
 
-            return true;
-        }
+           return true;
+       }
 
-        public function after($event = [])
-        {
-            if (!empty($event['errors']) || !isset($event['create']))
-                return;
+       public function after($event = [])
+       {
+           if (!empty($event['errors']) || !isset($event['create'])) {
+               return;
+           }
 
-            $installerInitModel = ClassRegistry::init('CakeInstaller.InstallerInit');
-            $installerInitModel->initDbTable($event['create']);
-        }
-        ...
-}
-```
+           $installerInitModel = ClassRegistry::init('CakeInstaller.InstallerInit');
+           $installerInitModel->initDbTable($event['create']);
+       }
+       ...
+   }
+   ```
 
 2. In your Model, create the `initDbTable()` method, e.g.:
 
-```php
-/**
- * Initialization of database table the initial values
- *
- * @return bool Success
- */
-public function initDbTable()
-{
-    $dataToSave = [];
-    $types = constsToWords('DATA_TYPE_');
+   ```php
+   /**
+    * Initialization of database table the initial values
+    *
+    * @return bool Success
+    */
+   public function initDbTable()
+   {
+       $dataToSave = [];
+       $types = constsToWords('DATA_TYPE_');
 
-    foreach ($types as $id => $name) {
-        $dataToSave[][$this->alias] = compact('id', 'name');
-    }
-    
-    if (empty($dataToSave)) {
-        return false;
-    }
+       foreach ($types as $id => $name) {
+           $dataToSave[][$this->alias] = compact('id', 'name');
+       }
 
-    return (bool)$this->saveAll($dataToSave);
-}
-```
+       if (empty($dataToSave)) {
+           return false;
+       }
+
+       return (bool)$this->saveAll($dataToSave);
+   }
+   ```
 
 ## Example of configuration file
 
