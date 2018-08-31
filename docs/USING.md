@@ -16,6 +16,7 @@ public $components = [
 
    Where `ProjectCfg` is the application configuration key used in call `Configure::read('ProjectCfg');`.
    Used to fast checking the application is already installed.
+
 4. Copy translation files from `app/Plugin/CakeInstaller/Locale/rus/LC_MESSAGES/cake_installer_label.*` to
 `app/Locale/rus/LC_MESSAGES`;
 
