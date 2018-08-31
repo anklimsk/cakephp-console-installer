@@ -3,7 +3,7 @@
 ## Install this plugin
 
 1. Copy configuration file from `app/Plugin/CakeInstaller/Config/cakeinstaller.php` to `app/Config`.
-2. Edit config file and configure plugin [See `Example of configuration file`](#example-of-configuration-file)
+2. Edit config file and configure plugin [See "Example of configuration file"](#example-of-configuration-file)
 3. Include component `CakeInstaller.Installer` in your `AppController`:
 ```php
 public $components = [
@@ -28,7 +28,7 @@ Used to fast checking the application is already installed.
 ```php
 App::uses('InstallerInit', 'CakeInstaller.Model');
 App::uses('ClassRegistry', 'Utility');
-  
+
 class AppSchema extends CakeSchema
 {
 
@@ -256,5 +256,4 @@ $config['CakeInstaller'] = [
         'rus',
     ]
 ];
-
 ```
