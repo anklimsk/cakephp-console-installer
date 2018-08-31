@@ -14,7 +14,7 @@ public $components = [
 ```
 Where `ProjectCfg` is the application configuration key used in call `Configure::read('ProjectCfg');`.
 Used to fast checking the application is already installed.
-4. Copy i18n files from `app/Plugin/CakeInstaller/Locale/rus/LC_MESSAGES/cake_installer_label.*` to
+4. Copy translation files from `app/Plugin/CakeInstaller/Locale/rus/LC_MESSAGES/cake_installer_label.*` to
 `app/Locale/rus/LC_MESSAGES`;
 
 ## Using console
@@ -250,7 +250,7 @@ $config['CakeInstaller'] = [
     'cronJobs' => [
         // 'cd ' . APP . ' && Console/cake Queue.Queue runworker -q' => '*/10 * * * *'
     ],
-    // List of languages for installer UI in format: ISO639-2
+    // List of languages for installer UI in format: ISO 639-2
     'UIlangList' => [
         'eng',
         'rus',
