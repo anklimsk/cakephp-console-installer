@@ -5,6 +5,7 @@
 1. Copy configuration file from `app/Plugin/CakeInstaller/Config/cakeinstaller.php` to `app/Config`.
 2. Edit config file and configure plugin [See "Example of configuration file"](#example-of-configuration-file)
 3. Include component `CakeInstaller.Installer` in your `AppController`:
+
 ```php
 public $components = [
     'CakeInstaller.Installer' => [
@@ -12,12 +13,14 @@ public $components = [
     ]
 ];
 ```
+
 Where `ProjectCfg` is the application configuration key used in call `Configure::read('ProjectCfg');`.
 Used to fast checking the application is already installed.
 4. Copy translation files from `app/Plugin/CakeInstaller/Locale/rus/LC_MESSAGES/cake_installer_label.*` to
 `app/Locale/rus/LC_MESSAGES`;
 
 ## Using console
+
 - `Console/cake CakeInstaller -h` - To get help;
 - `Console/cake CakeInstaller` - To start interactive shell of installer;
 - `Console/cake CakeInstaller check` - To start command of installer.
@@ -25,6 +28,7 @@ Used to fast checking the application is already installed.
 ## Initialization of database tables with data
 
 1. Add to the beginning of the schema file `app/Config/Schema/schema.php` of your application:
+
 ```php
 App::uses('InstallerInit', 'CakeInstaller.Model');
 App::uses('ClassRegistry', 'Utility');
@@ -51,7 +55,9 @@ class AppSchema extends CakeSchema
         ...
 }
 ```
+
 2. In your Model, create the `initDbTable()` method, e.g.:
+
 ```php
 /**
  * Initialization of database table the initial values
@@ -76,6 +82,7 @@ public function initDbTable()
 ```
 
 ## Example of configuration file
+
 ```php
 $config['CakeInstaller'] = [
     // Version of PHP for check
