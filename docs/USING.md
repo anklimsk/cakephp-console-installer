@@ -6,13 +6,13 @@
 2. Edit config file and configure plugin [See "Example of configuration file"](#example-of-configuration-file)
 3. Include component `CakeInstaller.Installer` in your `AppController`:
 
-```php
-public $components = [
-    'CakeInstaller.Installer' => [
-        'ConfigKey' => 'ProjectCfg'
-    ]
-];
-```
+   ```php
+   public $components = [
+       'CakeInstaller.Installer' => [
+           'ConfigKey' => 'ProjectCfg'
+       ]
+   ];
+   ```
 
    Where `ProjectCfg` is the application configuration key used in call `Configure::read('ProjectCfg');`.
    Used to fast checking the application is already installed.
