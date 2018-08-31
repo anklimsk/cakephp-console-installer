@@ -1,6 +1,6 @@
 # Using this plugin
 
-## Install this plugin
+## Preparing this plugin
 
 1. Copy configuration file from `app/Plugin/CakeInstaller/Config/cakeinstaller.php` to `app/Config`.
 2. Edit config file and configure plugin [See "Example of configuration file"](#example-of-configuration-file)
@@ -14,8 +14,8 @@ public $components = [
 ];
 ```
 
-Where `ProjectCfg` is the application configuration key used in call `Configure::read('ProjectCfg');`.
-Used to fast checking the application is already installed.
+   Where `ProjectCfg` is the application configuration key used in call `Configure::read('ProjectCfg');`.
+   Used to fast checking the application is already installed.
 
 4. Copy translation files from `app/Plugin/CakeInstaller/Locale/rus/LC_MESSAGES/cake_installer_label.*` to
 `app/Locale/rus/LC_MESSAGES`;
