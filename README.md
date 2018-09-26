@@ -1,5 +1,8 @@
 # CakePHP 2.x Console installer plugin
 [![Build Status](https://travis-ci.com/anklimsk/cakephp-console-installer.svg?branch=master)](https://travis-ci.com/anklimsk/cakephp-console-installer)
+[![Coverage Status](https://codecov.io/gh/anklimsk/cakephp-console-installer/branch/master/graph/badge.svg)](https://codecov.io/gh/anklimsk/cakephp-console-installer)
+[![Latest Stable Version](https://poser.pugx.org/anklimsk/cakephp-console-installer/version)](https://packagist.org/packages/anklimsk/cakephp-console-installer)
+[![License](https://poser.pugx.org/anklimsk/cakephp-console-installer/license)](https://packagist.org/packages/anklimsk/cakephp-console-installer)
 
 Console installer for CakePHP
 
