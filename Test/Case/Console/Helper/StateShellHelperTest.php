@@ -63,7 +63,7 @@ class StateShellHelperTest extends AppCakeTestCase {
 		];
 		$expected = [
 			null,
-			'Test message	[Ok]',
+			'Test message    [Ok]',
 			'Test message [Ok]',
 			'Test message',
 		];
@@ -99,7 +99,7 @@ class StateShellHelperTest extends AppCakeTestCase {
 		$this->_targetObject->output($data);
 
 		$expected = [
-			'Test message	[Ok]',
+			'Test message    [Ok]',
 			'Test message [Ok]',
 			'Test message',
 		];
