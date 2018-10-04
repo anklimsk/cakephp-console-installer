@@ -342,7 +342,7 @@ class CakeInstallerShell extends AppShell {
  * @return void
  */
 	public function setsecurkey() {
-		$this->_setsecurkey();
+		$this->_setsecurkey(false, false);
 
 		return $this->_stop();
 	}
@@ -1025,11 +1025,12 @@ EOD;
  * Create and write security keys in the settings file.
  *
  * @param bool $check If True, check this action has already been completed.
+ * @param bool $boot Whether to do bootstrapping.
  * @see CakeInstallerShell::setsecurkey() CakeInstallerShell::setsecurkey() Create and write
  *  security keys in the settings file.
  * @return bool Success
  */
-	protected function _setsecurkey($check = false) {
+	protected function _setsecurkey($check = false, $boot = true) {
 		$this->out(__d('cake_installer', 'Setting security keys'));
 		$this->hr();
 
@@ -1071,7 +1072,7 @@ EOD;
 
 		$this->hr();
 		if ($result) {
-			Configure::bootstrap(true);
+			Configure::bootstrap($boot);
 			$this->_initUiLang();
 			$this->out('<success>' . __d('cake_installer', 'The security keys is written successfully.') . '</success>');
 		} else {
