@@ -22,7 +22,6 @@
 	echo $this->Html->meta('icon');
 
 	echo $this->Html->css([
-		'CakeInstaller.font-awesome/css/font-awesome.min.css?v=4.7.0',
 		'CakeInstaller.bootstrap/bootstrap.min.css?v=3.3.7',
 		'CakeInstaller.Installer.min.css?v=0.8.0'
 		]);
@@ -30,13 +29,16 @@
 	echo $this->Html->script([
 		'CakeInstaller.jquery/jquery.min.js?v=1.12.3',
 		'CakeInstaller.bootstrap/bootstrap.min.js?v=3.3.7',
+		'CakeInstaller.font-awesome/fa-solid.min.js?v=5.1.0',
+		'CakeInstaller.font-awesome/fa-regular.min.js?v=5.1.0',
+		'CakeInstaller.font-awesome/fontawesome.min.js?v=5.1.0',
 		'CakeInstaller.layout.installer.min.js?v=0.8.0'
 		]);
 ?>  
 </head>
 <body>
 	<div id="container">
-		<div id="header">   
+		<div id="header">
 			<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="container-fluid">
 					<div class="navbar-header">
