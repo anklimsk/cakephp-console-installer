@@ -1583,9 +1583,9 @@ EOD;
 		} else {
 			$result = $contents;
 			if (!empty($configComment)) {
-				$result .= sprintf("\r\n/**\r\n * %s\r\n */", $configComment);
+				$result .= sprintf("\n/**\n * %s\n */", $configComment);
 			}
-			$result .= "\r\n\t" . $configStr . "\r\n";
+			$result .= "\n\t" . $configStr . "\n";
 		}
 
 		return $oFile->write($result);
