@@ -440,27 +440,36 @@ class CakeInstallerShell extends AppShell {
  * @return void
  */
 	protected function _install() {
+		$this->waiting->animateMessage();
+
 		$installTasks = $this->ConfigInstaller->getListInstallerTasks();
+		$this->waiting->animateMessage();
 		if (empty($installTasks)) {
+			$this->waiting->hideMessage();
 			$this->out('<error>' . __d('cake_installer', 'Empty command list for action install. See config file.') . '</error>');
 
 			return;
 		}
 
 		$installerCommands = $this->ConfigInstaller->getListInstallerCommands();
+		$this->waiting->animateMessage();
 		if (empty($installerCommands)) {
+			$this->waiting->hideMessage();
 			$this->out('<error>' . __d('cake_installer', 'Empty command list. See config file.') . '</error>');
 
 			return;
 		}
 
 		$tasks = array_values(array_intersect($installerCommands, $installTasks));
+		$this->waiting->animateMessage();
 		if (empty($tasks)) {
+			$this->waiting->hideMessage();
 			$this->out('<error>' . __d('cake_installer', 'Invalid command list for action install. See config file.') . '</error>');
 
 			return;
 		}
 
+		$this->waiting->hideMessage();
 		$isAppInstalled = $this->InstallerCheck->isAppInstalled(null, false);
 		if ($isAppInstalled) {
 			if (!$this->_checkSure(__d('cake_installer', 'Application is installed. Reinstall?'))) {
