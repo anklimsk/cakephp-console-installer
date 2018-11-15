@@ -232,7 +232,7 @@ class CakeInstallerShell extends AppShell {
 		$actionName = $this->inputFromList($this, $installerCommands, $inputMessage, $titleMessage, 'exit');
 		$this->clear();
 		$methodName = '_' . $actionName;
-		$this->$methodName();
+		call_user_func([$this, $methodName]);
 	}
 
 /**
@@ -489,6 +489,7 @@ class CakeInstallerShell extends AppShell {
 				break;
 			} else {
 				$stepResult = $this->$taskName(true);
+				$stepResult = call_user_func([$this, $taskName], true);
 				if (is_null($stepResult)) {
 					$this->out('<success>' . __d('cake_installer', 'To apply the changes, restart the installer.') . '</success>');
 					$this->InstallerCheck->setNeedRestart();
@@ -1326,6 +1327,8 @@ EOD;
 		$result = true;
 		if (is_file($path) || is_dir($path)) {
 			if ($func($path, $param)) {
+			$resultCall = call_user_func($func, $path, $param);
+			if ($resultCall) {
 				if (is_file($path)) {
 					return true;
 				}
