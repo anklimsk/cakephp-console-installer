@@ -686,14 +686,18 @@ class CakeInstallerShell extends AppShell {
 					$linkExists = true;
 				} else {
 					if (is_dir($link)) {
-						rmdir($link);
+						//@codingStandardsIgnoreStart
+						@rmdir($link);
+						//@codingStandardsIgnoreEnd
 					} else {
 						unlink($link);
 					}
 				}
 			}
 
-			if ($linkExists || (!$badTarget && symlink($target, $link))) {
+			//@codingStandardsIgnoreStart
+			if ($linkExists || (!$badTarget && @symlink($target, $link))) {
+				//@codingStandardsIgnoreEnd
 				$state = '<success>' . __d('cake_installer', 'Ok') . '</success>';
 			} else {
 				$state = '<error>' . __d('cake_installer', 'Bad') . '</error>';
@@ -1326,8 +1330,9 @@ EOD;
 
 		$result = true;
 		if (is_file($path) || is_dir($path)) {
-			if ($func($path, $param)) {
-			$resultCall = call_user_func($func, $path, $param);
+			//@codingStandardsIgnoreStart
+			$resultCall = @call_user_func($func, $path, $param);
+			//@codingStandardsIgnoreEnd
 			if ($resultCall) {
 				if (is_file($path)) {
 					return true;
@@ -1451,7 +1456,9 @@ EOD;
 			$this->out('<success>' . __d('cake_installer', 'Group of \'%s\' changed to \'%s\' successfully.', $tempDir . DS . '*.*', $apacheUserGroup) . '</success>');
 		}
 
-		if (!chgrp($fileConfig, $apacheUserGroup)) {
+		//@codingStandardsIgnoreStart
+		if (!@chgrp($fileConfig, $apacheUserGroup)) {
+			//@codingStandardsIgnoreEnd
 			$this->out('<error>' . __d('cake_installer', 'Could not change group on \'%s\' to \'%s\'', $fileConfig, $apacheUserGroup) . '</error>');
 			$this->out('<debug>chgrp ' . $apacheUserGroup . ' ' . $fileConfig . '</debug>', 1, Shell::VERBOSE);
 			$result = false;
@@ -1459,7 +1466,9 @@ EOD;
 			$this->out('<success>' . __d('cake_installer', 'Group of \'%s\' changed to \'%s\' successfully.', $fileConfig, $apacheUserGroup) . '</success>');
 		}*/
 
-		if (!chown($fileConfig, $apacheUser)) {
+		//@codingStandardsIgnoreStart
+		if (!@chown($fileConfig, $apacheUser)) {
+			//@codingStandardsIgnoreEnd
 			$this->out('<error>' . __d('cake_installer', 'Could not change owner on \'%s\' to \'%s\'', $fileConfig, $apacheUser) . '</error>');
 			$this->out('<debug>chown ' . $apacheUser . ' ' . $fileConfig . '</debug>', 1, Shell::VERBOSE);
 			$result = false;
