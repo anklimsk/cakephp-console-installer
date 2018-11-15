@@ -21,9 +21,11 @@
 
 ## Using console
 
-- `Console/cake CakeInstaller -h` - To get help;
-- `Console/cake CakeInstaller` - To start interactive shell of installer;
-- `Console/cake CakeInstaller check` - To start command of installer.
+To install the application, go to the OS console, navigate to the directory `app` application,
+   and run the following commands:
+- `sudo ./Console/cake CakeInstaller -h` - To get help;
+- `sudo ./Console/cake CakeInstaller` - To start interactive shell of installer;
+- `sudo ./Console/cake CakeInstaller check` - To start command of installer.
 
 ## Initialization of database tables with data
 
