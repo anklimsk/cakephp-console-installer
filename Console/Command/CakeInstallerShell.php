@@ -492,13 +492,16 @@ class CakeInstallerShell extends AppShell {
 			$this->out(null, 0);
 			$this->progress->draw();
 			$this->hr(1);
+			$timeProcess = 0;
 			$taskName = '_' . $tasks[$step];
 			if (!is_callable([$this, $taskName])) {
 				$result = false;
 				break;
 			} else {
-				$stepResult = $this->$taskName(true);
+				$timeStart = microtime(true);
 				$stepResult = call_user_func([$this, $taskName], true);
+				$timeEnd = microtime(true);
+				$timeProcess = $timeEnd - $timeStart;
 				if (is_null($stepResult)) {
 					$this->out('<success>' . __d('cake_installer', 'To apply the changes, restart the installer.') . '</success>');
 					$this->InstallerCheck->setNeedRestart();
@@ -511,6 +514,9 @@ class CakeInstallerShell extends AppShell {
 			}
 
 			$this->progress->increment(1);
+			if ($timeProcess < 0.2) {
+				usleep(200000);
+			}
 		}
 		if ($result) {
 			$this->clear();
