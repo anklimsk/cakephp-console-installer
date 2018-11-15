@@ -1317,21 +1317,21 @@ EOD;
  * Recursive change parameters of directory.
  *
  * @param string $path Path to target directory
- * @param string $func Function name, e.g.: `chown`  or `chmod`.
+ * @param string $funcName Function name, e.g.: `chown`, `chmod` or `chgrp`.
  * @param int $param Parameter for function, e.g.:
  *  user name of owner or mode for access.
  * @return bool Success
  */
-	protected function _changeDirParam($path = null, $func = null, $param = null) {
+	protected function _changeDirParam($path = null, $funcName = null, $param = null) {
 		if (empty($path) || !file_exists($path) ||
-			!in_array($func, ['chown', 'chmod', 'chgrp']) || empty($param)) {
+			!in_array($funcName, ['chown', 'chmod', 'chgrp']) || empty($param)) {
 			return false;
 		}
 
 		$result = true;
 		if (is_file($path) || is_dir($path)) {
 			//@codingStandardsIgnoreStart
-			$resultCall = @call_user_func($func, $path, $param);
+			$resultCall = @call_user_func($funcName, $path, $param);
 			//@codingStandardsIgnoreEnd
 			if ($resultCall) {
 				if (is_file($path)) {
@@ -1348,7 +1348,7 @@ EOD;
 		$dirContent = $oFolder->read(true, false, true);
 		foreach ($dirContent as $targetPaths) {
 			foreach ($targetPaths as $targetPath) {
-				if (!$this->_changeDirParam($targetPath, $func, $param)) {
+				if (!$this->_changeDirParam($targetPath, $funcName, $param)) {
 					$result = false;
 				}
 			}
