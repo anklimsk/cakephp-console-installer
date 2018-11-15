@@ -211,6 +211,7 @@ class CakeInstallerShell extends AppShell {
  * @return void
  */
 	public function main() {
+		$this->clear();
 		$installerCommands = $this->ConfigInstaller->getListInstallerCommands(false);
 		if (empty($installerCommands)) {
 			$this->out('<error>' . __d('cake_installer', 'Empty command list. See config file.') . '</error>');
