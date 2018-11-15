@@ -186,8 +186,8 @@ EOD;
 			CAKE_INSTALLER_SHELL_INSTALLER_TASK_SETSECURKEY,
 		]);
 		$this->_targetObject->expects($this->at(0))->method('in')->will($this->returnValue('n'));
-		$this->_targetObject->expects($this->at(5))->method('out')->with('   1. ' . __d('cake_installer', 'Checking PHP environment'));
-		$this->_targetObject->expects($this->at(6))->method('out')->with('   2. ' . __d('cake_installer', 'Setting security key'));
+		$this->_targetObject->expects($this->at(6))->method('out')->with('   1. ' . __d('cake_installer', 'Checking PHP environment'));
+		$this->_targetObject->expects($this->at(7))->method('out')->with('   2. ' . __d('cake_installer', 'Setting security key'));
 		$this->_targetObject->expects($this->any())->method('in')->will($this->returnValue('1'));
 		$this->_targetObject->main();
 	}
@@ -202,8 +202,8 @@ EOD;
 			CAKE_INSTALLER_SHELL_INSTALLER_TASK_CHECK,
 			CAKE_INSTALLER_SHELL_INSTALLER_TASK_SETSECURKEY,
 		]);
-		$this->_targetObject->expects($this->at(4))->method('out')->with('   1. ' . __d('cake_installer', 'Checking PHP environment'));
-		$this->_targetObject->expects($this->at(5))->method('out')->with('   2. ' . __d('cake_installer', 'Setting security key'));
+		$this->_targetObject->expects($this->at(5))->method('out')->with('   1. ' . __d('cake_installer', 'Checking PHP environment'));
+		$this->_targetObject->expects($this->at(6))->method('out')->with('   2. ' . __d('cake_installer', 'Setting security key'));
 		$this->_targetObject->expects($this->any())->method('in')->will($this->returnValue('1'));
 		$this->_targetObject->main();
 	}
