@@ -57,10 +57,10 @@
 	</div>
 <?php
 	$actions = [
-		'<code><samp>./Console/cake CakeInstaller</samp></code> - ' . __d('cake_installer', 'to run the interactive installer'),
-		'<code><samp>./Console/cake CakeInstaller check</samp></code> - ' . __d('cake_installer', 'to check the readiness of the start installation'),
-		'<code><samp>./Console/cake CakeInstaller install</samp></code> - ' . __d('cake_installer', 'to start the installation process'),
-		'<code><samp>./Console/cake CakeInstaller --help</samp></code> - ' . __d('cake_installer', 'to get help'),
+		'<code><samp>sudo ./Console/cake CakeInstaller</samp></code> - ' . __d('cake_installer', 'to run the interactive installer'),
+		'<code><samp>sudo ./Console/cake CakeInstaller check</samp></code> - ' . __d('cake_installer', 'to check the readiness of the start installation'),
+		'<code><samp>sudo ./Console/cake CakeInstaller install</samp></code> - ' . __d('cake_installer', 'to start the installation process'),
+		'<code><samp>sudo ./Console/cake CakeInstaller --help</samp></code> - ' . __d('cake_installer', 'to get help'),
 	];
 
 	if (!$isAppInstalled) {
