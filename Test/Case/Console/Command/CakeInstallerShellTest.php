@@ -29,6 +29,13 @@ class CakeInstallerShellTest extends AppCakeTestCase {
 	protected $_markerFileRestart = TMP . 'tests' . DS . 'test_restart.txt';
 
 /**
+ * Path to marker file for checking if need restart installation process.
+ *
+ * @var string
+ */
+	protected $_markerFileInstalled = TMP . 'tests' . DS . 'test_installed.txt';
+
+/**
  * setup test
  *
  * @return void
@@ -46,6 +53,7 @@ class CakeInstallerShellTest extends AppCakeTestCase {
 		$this->_targetObject->initialize();
 		$this->_targetObject->path = $this->_testDir;
 		$this->_targetObject->useActionNotify = false;
+		$this->_targetObject->InstallerCheck->markerFileInstalled = $this->_markerFileInstalled;
 		$this->_targetObject->InstallerCheck->markerFileRestart = $this->_markerFileRestart;
 		$oFolder = new Folder($this->_targetObject->path, true);
 		$oFolder->create($this->_testDir . 'tmp');
@@ -79,6 +87,9 @@ class DATABASE_CONFIG {
 }
 EOD;
 		$oFile->write($tmpConfig);
+		if (file_exists($this->_markerFileInstalled)) {
+			unlink($this->_markerFileInstalled);
+		}
 		if (file_exists($this->_markerFileRestart)) {
 			unlink($this->_markerFileRestart);
 		}
@@ -90,6 +101,9 @@ EOD;
  * @return void
  */
 	public function tearDown() {
+		if (file_exists($this->_markerFileInstalled)) {
+			unlink($this->_markerFileInstalled);
+		}
 		if (file_exists($this->_markerFileRestart)) {
 			unlink($this->_markerFileRestart);
 		}
@@ -340,5 +354,22 @@ EOD;
 		$contents = $File->read();
 		$this->assertRegExp('/' . preg_quote('Configure::write(\'Config.language\', \'eng\')', '/') . '/', $contents);
 		$this->assertRegExp('/' . preg_quote('setLocale(LC_ALL, \'eng\')', '/') . '/', $contents);
+	}
+
+/**
+ * testInstall method
+ *
+ * @return void
+ */
+	public function testInstall() {
+		Configure::write('CakeInstaller.installTasks', [
+			CAKE_INSTALLER_SHELL_INSTALLER_TASK_CHECK,
+			CAKE_INSTALLER_SHELL_INSTALLER_TASK_SETSECURKEY,
+		]);
+		$this->_targetObject->expects($this->at(1))->method('in')->will($this->returnValue('y'));
+		$this->_targetObject->expects($this->at(29))->method('out')
+			->with($this->stringContains('<success>' . __d('cake_installer', 'The installation process is completed successfully.') . '</success>'));
+		$this->_targetObject->install();
+		$this->assertTrue(file_exists($this->_markerFileInstalled));
 	}
 }
