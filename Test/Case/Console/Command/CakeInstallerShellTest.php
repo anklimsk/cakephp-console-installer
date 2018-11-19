@@ -371,5 +371,6 @@ EOD;
 			->with($this->stringContains('<success>' . __d('cake_installer', 'The installation process is completed successfully.') . '</success>'));
 		$this->_targetObject->install();
 		$this->assertTrue(file_exists($this->_markerFileInstalled));
+		$this->assertTrue($this->_targetObject->InstallerCompleted->intsallCompletedState);
 	}
 }

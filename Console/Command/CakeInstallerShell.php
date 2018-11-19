@@ -15,6 +15,7 @@ App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
 App::uses('String', 'Utility');
 App::uses('CakeText', 'Utility');
+App::uses('ClassRegistry', 'Utility');
 App::uses('CakeSchema', 'Model');
 App::uses('Language', 'CakeBasicFunctions.Utility');
 
@@ -92,6 +93,13 @@ class CakeInstallerShell extends AppShell {
 	public $useActionNotify = true;
 
 /**
+ * Object of model `InstallerCompleted`
+ *
+ * @var object
+ */
+	public $InstallerCompleted = null;
+
+/**
  * Initializes the Shell
  * acts as constructor for subclasses
  * allows configuration of tasks prior to shell execution
@@ -103,6 +111,11 @@ class CakeInstallerShell extends AppShell {
 		Configure::write('Cache.disable', true);
 		$this->_initUiLang();
 		parent::initialize();
+
+		$this->InstallerCompleted = ClassRegistry::init('InstallerCompleted', true);
+		if ($this->InstallerCompleted === false) {
+			$this->InstallerCompleted = ClassRegistry::init('CakeInstaller.InstallerCompleted');
+		}
 
 		$this->progress = $this->helper('Progress');
 		$this->state = $this->helper('CakeInstaller.State');
@@ -527,7 +540,8 @@ class CakeInstallerShell extends AppShell {
 			$this->out(null, 0);
 			$this->progress->draw();
 			$this->hr(1);
-			if (!$this->InstallerCheck->isAppInstalled(null, true)) {
+			if (!$this->InstallerCheck->isAppInstalled(null, true) ||
+				!$this->InstallerCompleted->intsallCompleted()) {
 				$result = false;
 			}
 		}

@@ -25,7 +25,7 @@ To install the application, go to the OS console, navigate to the directory `app
    and run the following commands:
 - `sudo ./Console/cake CakeInstaller -h` - To get help;
 - `sudo ./Console/cake CakeInstaller` - To start interactive shell of installer;
-- `sudo ./Console/cake CakeInstaller check` - To start command of installer.
+- `sudo ./Console/cake CakeInstaller check` - To start command of installer, e.g. `check`.
 
 ## Initialization of database tables with data
 
@@ -81,6 +81,22 @@ To install the application, go to the OS console, navigate to the directory `app
        }
 
        return (bool)$this->saveAll($dataToSave);
+   }
+   ```
+
+## Using callback method after the installation process is complete
+
+1. Copy model file from `app/Plugin/CakeInstaller/Model/InstallerCompleted.php.default` to `app/Model/InstallerCompleted.php`
+2. Fill the method `InstallerCompleted::intsallCompleted()`:
+
+   ```php
+   /**
+    * This method is called after the installation process is complete.
+    *
+    * @return bool Success
+    */
+   public function intsallCompleted() {
+      return true;
    }
    ```
 

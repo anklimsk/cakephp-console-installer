@@ -64,6 +64,14 @@ class AppControllerTestCase extends ExtendControllerTestCase {
  * @return void
  */
 	public function setUp() {
+		$pathPlugin = CakePlugin::path('CakeInstaller');
+		$pathModel = $pathPlugin . 'Test' . DS . 'test_app' . DS . 'Model' . DS;
+		App::build(
+			[
+				'Model' => $pathModel,
+			],
+			App::RESET
+		);
 		parent::setUp();
 
 		$path = __DIR__ . DS;
