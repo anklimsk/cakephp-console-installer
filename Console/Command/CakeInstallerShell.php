@@ -3,7 +3,7 @@
  * This file is the console shell file of the plugin.
  *
  * CakeInstaller: Installer of CakePHP web application.
- * @copyright Copyright 2016-2018, Andrey Klimov.
+ * @copyright Copyright 2016-2020, Andrey Klimov.
  * @license https://opensource.org/licenses/mit-license.php MIT License
  * @package plugin.Console.Command
  */
@@ -638,15 +638,15 @@ class CakeInstallerShell extends AppShell {
 				}
 			}
 		}
-		
+
 		$yesArg = '';
 		if (!empty($this->param('yes'))) {
 			$yesArg = ' --yes';
 		}
-		
+
 		$schemaList = $this->ConfigInstaller->getListSchemaCreation();
 		$schemaList[] = 'application';
-		
+
 		$this->out(__d('cake_installer', 'Create additional schemes'));
 		foreach ($schemaList as $schemaName) {
 			if (empty($schemaName)) {
@@ -664,7 +664,7 @@ class CakeInstallerShell extends AppShell {
 			$this->out($message);
 			$this->hr();
 			$this->nl(1);
-			
+
 			$additionalSchemaArgs = 'schema create' . $schemaArg . ' --quiet' . $yesArg;
 			$this->dispatchShell($additionalSchemaArgs);
 		}
